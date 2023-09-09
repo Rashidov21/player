@@ -4,17 +4,41 @@
 <p>{{player.count}} {{player.plu_sing}} found</p>
 <br>
 <div class="player">
-    {% for object in player%}
+    {% for object in page_obj %}
   <div class="one">
-        <div><img src="{{object.image}}" alt=""></div>
+        <div><img src="{{object.image.url}}" alt=""></div>
         <div>{{object.name}}</div>
         <div>{{object.country}}</div>
         <div>{{object.club}}</div>
         <div>{{object.age}}</div>
         <div>{{object.rating}}</div>
     </div>
-    {%endfor%}
+    {% endfor%}
   </div>
+</div>
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+          {% endif %}
+          {% for page in page_obj.paginator.page_range %}
+          <a href="?page={{page}}" 
+          style='{% if page == page_obj.number %}background-color:khaki;{% endif %}'>{{page}}</a>
+          {% endfor %}
+
+      <span class="current">
+        <span >
+          {{ page_obj.number }}
+        </span>
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
 </div>
 {% endblock %}
 

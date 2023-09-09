@@ -28,35 +28,35 @@ def log_out(request):
 
 
 
-def HomeView(request):
-    if request.GET.get('q') != None:
-        q = request.GET.get('q')
-    else:
-        q = ' '
-    player = Player.objects.filter(
-        name__icontains = q
-    )
-    count = player.count()    
-    context = {"player":player}
-    return render(request, "index.html", context)
-    print(player)
+# def HomeView(request):
+#     if request.GET.get('q') != None:
+#         q = request.GET.get('q')
+#     else:
+#         q = ' '
+#     player = Player.objects.filter(
+#         name__icontains = q
+#     )
+#     count = player.count()    
+#     context = {"player":player}
+#     return render(request, "index.html", context)
+#     print(player)
 
 
 
 
 
-# class HomeView(ListView):
-#     model = Player
+class HomeView(ListView):
+    model = Player
+    template_name = 'index.html'
+    context_object_name = 'players'
+    paginate_by = 2
+    # context_object_name = {"play÷er", "image"}
     
-#     def get_queryset(self):
-#         player = Player.objects.all()
-#         image = Player.objects.filter(player.images)
-#         return player, image
+    def get_queryset(self):
+        player = Player.objects.all()
+        return player
     
-#     context_object_name = {"player", "image"}
-#     template_name = 'index.html'
     
-#     context_object_name = 'players'
 
 class AboutView(TemplateView):
     template_name = 'about.html'
