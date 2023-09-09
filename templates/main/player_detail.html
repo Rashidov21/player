@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% block content %}
+
+    <div class="container">
+        <div class="one">
+            <div><img src="{{object.image.url}}" alt=""></div>
+            <div>{{object.name}}</div>
+            <div>{{player.country}}</div>
+            <div>{{object.club}}</div>
+            <div>{{object.age}}</div>
+            <div>{{object.rating}}</div>
+        </div>
+    </div>
+{% endblock %}

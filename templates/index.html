@@ -1,12 +1,24 @@
 {% extends 'base.html'%}
 {% block content %}
-<h1>Players Table</h1>
-<p>{{player.count}} {{player.plu_sing}} found</p>
+<div class="container">
+  <h1>Players Table</h1>
+<div>
+  {% for club in clubs %}
+  <a href="{% url 'main:club_list' club.name %}">
+    <img src="{{club.logo.url}}" width="30" alt="">
+    {{club.name}}
+  </a>
+  {% endfor %}
+</div>
 <br>
 <div class="player">
     {% for object in page_obj %}
   <div class="one">
-        <div><img src="{{object.image.url}}" alt=""></div>
+        <div>
+          <a href="{% url 'main:player_detail' object.slug %}">
+          <img src="{{object.image.url}}" alt="{{object.name}}" width="100">
+          </a>
+        </div>
         <div>{{object.name}}</div>
         <div>{{object.country}}</div>
         <div>{{object.club}}</div>
@@ -39,6 +51,7 @@
           <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
       {% endif %}
   </span>
+</div>
 </div>
 {% endblock %}
 
