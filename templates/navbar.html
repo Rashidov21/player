@@ -1,0 +1,29 @@
+<header class="bg-dark">
+    <div class="container py-2">
+       <nav>
+           <ul class="nav">
+               <li class="nav-item">
+                   <a href="{% url 'main:home' %}" class="nav-link fw-bold fs-5">Home</a>
+               </li>
+               <li class="nav-item">
+                   <a href="{% url 'main:about' %}" class="nav-link fw-bold fs-5">About</a>
+               </li>
+               <li class="nav-item">
+                   <a href="{% url 'main:contact'%}" class="nav-link fw-bold fs-5">Contact {{test_text}}</a>
+               </li>
+           </ul>
+           <div>
+            <form action="{% url 'main:home' %}">
+                <input type="text" name="q">
+            </form>
+           </div>
+           <div>
+        {% if request.user.is_authenticated %}
+           <button> <a href="{% url 'main:logout' %}">Logout</a></button>
+            {%else%}
+           <button><a href="{% url 'main:login' %}">LogIn</a></button>
+           {%endif%}
+           </div>
+       </nav>
+    </div>
+</header>

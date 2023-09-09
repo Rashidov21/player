@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1>Players Table</h1>
+<p>{{player.count}} {{player.plu_sing}} found</p>
+<br>
+<div class="player">
+    {% for object in player%}
+  <div class="one">
+        <div><img src="{{object.image}}" alt=""></div>
+        <div>{{object.name}}</div>
+        <div>{{object.country}}</div>
+        <div>{{object.club}}</div>
+        <div>{{object.age}}</div>
+        <div>{{object.rating}}</div>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+{% endblock %}
+

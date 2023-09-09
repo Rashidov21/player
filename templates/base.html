@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      {# Load the tag library #}
+    {% load bootstrap5 %}
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            list-style: none;
+        }
+        .container1{
+        padding: 2% 5%;
+        }
+        .name{
+            display: flex;
+            border: 1px solid gray;
+            column-gap: 20px;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav button{
+            background-color: blue;
+            color: white;
+            outline: none;
+            border: none;
+            width: 70px;
+            height: 35px;
+            border-radius: 10px;
+        }
+        nav button a{
+            color: white;
+            text-decoration: none;
+        }
+        button:hover{
+            transform: scale(1.05);
+        }
+        .loginForm form{
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            width: 400px;
+        }
+        .loginForm{
+            background-color: rgb(31, 31, 31);
+            padding: 10px 10px;
+            width: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            padding: 10% 5%;
+        }
+        .loginForm .input{
+            outline: none;
+            padding: 2% 2%;
+            border-radius: 10px;
+            border: none;
+        }
+        .loginForm form #type{
+            background-color: blue;
+            border: none;
+            color: white;
+            padding: 2% 2%;
+            border-radius: 10px;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        .player{
+            display: flex;
+            column-gap: 50px;
+            
+        }
+    </style>
+</head>
+<body>
+        {% include 'navbar.html'%}
+
+     <div class="container1">
+        {% block content%}
+
+        {% endblock%}
+       </div>
+</body>
+</html>
